@@ -1,0 +1,240 @@
+:root {
+  /* 莫蘭迪色系調色盤 Morandi Palette */
+  --bg-gradient-1: #E4E5E0; /* 溫和灰白 */
+  --bg-gradient-2: #C5CAC3; /* 淺灰綠 */
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: rgba(148, 155, 146, 0.15);
+  
+  --text-main: #5C5E58; /* 深橄欖灰 */
+  --text-light: #7E8278;
+  
+  --color-work: #8A9A91; /* 莫蘭迪綠 */
+  --color-break: #96A3AD; /* 莫蘭迪藍 */
+  
+  --btn-hover-bg: rgba(255, 255, 255, 0.7);
+  --btn-active-bg: rgba(255, 255, 255, 0.9);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+}
+
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 32px var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-weight: 600;
+  font-size: 28px;
+  margin: 0 0 4px 0;
+  letter-spacing: 1px;
+}
+
+.header .subtitle {
+  font-size: 14px;
+  color: var(--text-light);
+  margin: 0;
+  font-weight: 300;
+}
+
+.mode-selector {
+  display: flex;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  padding: 4px;
+  margin-bottom: 32px;
+}
+
+.mode-btn {
+  background: transparent;
+  border: none;
+  border-radius: 26px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+  background: var(--btn-active-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* 針對工作/休息模式切換色彩 */
+body.mode-work {
+  --color-active: var(--color-work);
+}
+
+body.mode-break {
+  --color-active: var(--color-break);
+}
+
+.timer-display {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.time-text {
+  position: absolute;
+  font-size: 56px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  color: var(--text-main);
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring__track {
+  stroke: rgba(255, 255, 255, 0.4);
+}
+
+.progress-ring__circle {
+  stroke: var(--color-active, var(--color-work));
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear, stroke 0.5s ease;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.control-btn {
+  border: none;
+  border-radius: 16px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.control-btn.primary {
+  background: var(--color-active, var(--color-work));
+  color: #FFF;
+  box-shadow: 0 4px 12px rgba(138, 154, 145, 0.3);
+}
+
+.control-btn.primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.control-btn.secondary {
+  background: var(--glass-bg);
+  color: var(--text-main);
+  border: 1px solid var(--glass-border);
+}
+
+.control-btn.secondary:hover {
+  background: var(--btn-hover-bg);
+}
+
+.control-btn.hidden {
+  display: none;
+}
+
+.settings-section {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  padding-top: 24px;
+}
+
+.settings-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-light);
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.settings-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.input-group input {
+  width: 60px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-main);
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--color-active, var(--color-work));
+}
+
+/* 隱藏原生數字輸入框的上下箭頭 */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "莫蘭迪番茄鐘",
+  "short_name": "番茄鐘",
+  "description": "平靜專注的番茄鐘計時器",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#E4E5E0",
+  "theme_color": "#8A9A91",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
